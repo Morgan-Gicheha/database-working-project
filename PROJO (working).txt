@@ -1,0 +1,114 @@
+DROP TABLE  IF EXISTS CUSTOMERS_INFO;
+
+CREATE TABLE   CUSTOMERS_INFO(
+CUSTOMERS_id serial,
+FirstName varchar (20)not null primary key,
+SecondName varchar(20),
+Address varchar(50)
+);
+
+INSERT INTO CUSTOMERS_INFO(FirstName,SecondName,Address ) VALUES('Amos','muriuki','nairobi ');
+
+INSERT INTO CUSTOMERS_INFO(FirstName,SecondName,Address ) VALUES('Morgan','Gicheha','Kisumu');
+
+INSERT INTO CUSTOMERS_INFO(FirstName,SecondName,Address ) VALUES('Dancan','Mwangi','Malawi');
+
+INSERT INTO CUSTOMERS_INFO(FirstName,SecondName,Address ) VALUES('Edwin','Weru','mwiki');
+
+INSERT INTO CUSTOMERS_INFO(FirstName,SecondName,Address ) VALUES('Damaris','Nyambura','Nairobi');
+
+
+ DROP DATABASE IF EXISTS ELECTRONICS;
+ CREATE DATABASE ELETRONICS;
+USE ELETRONICS;
+ DROP TABLE IF EXISTS STOCK;
+
+ CREATE TABLE STOCK(
+ID serial,
+GOODS VARCHAR (50) NOT NULL UNIQUE,
+BUYING_PRICE INT,
+number_of_items int
+);
+
+
+ DROP TABLE IF EXISTS RETURNED_GOODS;
+CREATE TABLE RETURNED_GOODS(
+ID SERIAL,
+SALE_CODE VARCHAR (20) NOT NULL,
+CUSTOMER_id int NOT NULL,
+GOODS_RETURNED VARCHAR (50) NOT NULL,
+ MONEY_REFUNDED INT NOT NULL,
+ REASON VARCHAR(225)
+);
+
+
+START TRANSACTION;
+
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('Bulbs_white', 50,30);
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items ) VALUES('bulb_coloured',60,15);
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items ) VALUES('bulb_philips', 30,30);
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items ) VALUES('tester',20,15);
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('viro_padlock',300,3);
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('bulb_holder',30,12);
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('earphones',60,10);
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('socket',150,6);
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('wire',1500,1);
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('aux­cable',30,10);
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('3pin_aux_cable',40,10);
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('aerial_pin',10,30);
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('battery_remote',15,10);
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('bed_switch',70,10);
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('aerial_medium',150,3);
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('gas_pipe',2000,1);
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('super_glue',15,60);
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('torch',50,5);
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('data_cable',70,18);
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('aerial_small',100,3);
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('phone_battery',75,3);
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('extension_black',70,3);
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('phone_pocket',50,1);
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('big_aerial',700,3);
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('astra_extension',250,5);
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('umbrella',100,3);
+
+
+ ALTER TABLE STOCK ADD TOTAL INT;
+UPDATE STOCK SET TOTAL =BUYING_PRICE*number_of_items;
+
+COMMIT;
+
+
+ DROP TABLE IF EXISTS SALES;
+CREATE TABLE SALES(
+ SALES_ID SERIAL,
+customers_ref int  NOT NULL ,
+ GOODS_SOLD  VARCHAR (50) NOT NULL ,
+NO_ITEMS INT NOT NULL,
+ PRICE varchar (18) NOT NULL,
+ TOTAL INT,
+stamp TIMESTAMP
+);
+
+insert into  sales (customers_ref, GOODS_SOLD,NO_ITEMS,PRICE) values(2,'torch',1,50);
+
+insert into  sales (customers_ref, GOODS_SOLD,NO_ITEMS,PRICE) values(3,'data_cable,1,70);
+
+insert into  sales (customers_ref, GOODS_SOLD,NO_ITEMS,PRICE) values(1,'big_aerial',2,700);
+
+insert into  sales (customers_ref, GOODS_SOLD,NO_ITEMS,PRICE) values(4,'umbrella',1,100);
+
+insert into  sales (customers_ref, GOODS_SOLD,NO_ITEMS,PRICE) values(5,'astra_extension',1,250);
+
+select * from sales;
+
+update  sales set total=NO_ITEMS*PRICE;
+
+
+select *from CUSTOMERS_INFO;
+
+select * from sales;
+
+select * from stock;
+
+
+
