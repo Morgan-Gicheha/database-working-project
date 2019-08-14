@@ -53,7 +53,7 @@ INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('bulb_holder',30,
 INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('earphones',60,10);
 INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('socket',150,6);
 INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('wire',1500,1);
-INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('aux­cable',30,10);
+INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('auxÂ­cable',30,10);
 INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('3pin_aux_cable',40,10);
 INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('aerial_pin',10,30);
 INSERT INTO STOCK (GOODS, BUYING_PRICE,number_of_items) VALUES('battery_remote',15,10);
@@ -111,4 +111,4 @@ select * from sales;
 select * from stock;
 
 
-
+'''my database'''
